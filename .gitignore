@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+mlflow/
+mlruns/
+mlflow.db
+data/
+.DS_Store
+.vscode/
+.claude/

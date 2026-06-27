@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 510" width="1400" height="510"
+     font-family="'Segoe UI', Arial, Helvetica, sans-serif">
+
+  <!-- ─── BACKGROUND ─── -->
+  <rect width="1400" height="510" fill="white"/>
+
+  <!-- ─── TITLE ─── -->
+  <text x="790" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#1a1a2e">
+    LLM Extraction Pipeline — Cancer Registry Automation
+  </text>
+  <text x="790" y="58" text-anchor="middle" font-size="12" fill="#666">
+    TCGA Pathology Reports (free text) → Structured Clinical Registry Fields · BRCA · LUAD · LUSC
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════
+       DATA SOURCES PANEL
+  ══════════════════════════════════════════════════════════ -->
+  <rect x="10" y="80" width="135" height="235" rx="8" fill="#E0F7FA" stroke="#00ACC1" stroke-width="1.5"/>
+  <text x="77" y="99" text-anchor="middle" font-size="11" font-weight="bold" fill="#006064">Data Sources</text>
+
+  <!-- TCGA Reports -->
+  <circle cx="77" cy="140" r="32" fill="#00ACC1"/>
+  <text x="77" y="134" text-anchor="middle" font-size="10" font-weight="bold" fill="white">TCGA</text>
+  <text x="77" y="148" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Reports</text>
+  <text x="77" y="182" text-anchor="middle" font-size="9" fill="#006064">9,523 free-text</text>
+  <text x="77" y="194" text-anchor="middle" font-size="9" fill="#006064">pathology reports</text>
+
+  <!-- Cancer Types CSV -->
+  <circle cx="77" cy="230" r="28" fill="#0097A7"/>
+  <text x="77" y="225" text-anchor="middle" font-size="9" font-weight="bold" fill="white">Pilot</text>
+  <text x="77" y="237" text-anchor="middle" font-size="9" font-weight="bold" fill="white">Study</text>
+  <text x="77" y="268" text-anchor="middle" font-size="9" fill="#006064">1,990 pilot records</text>
+
+  <!-- Arrow DS → Step 1 -->
+  <line x1="145" y1="158" x2="157" y2="158" stroke="#444" stroke-width="2"/>
+  <polygon points="157,153 168,158 157,163" fill="#444"/>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN PIPELINE BOXES  (y=130–200, h=70, amber fill)
+  ══════════════════════════════════════════════════════════ -->
+
+  <!-- ① Load & Join  x=168 -->
+  <rect x="168" y="130" width="118" height="55" rx="9" fill="#F9A825" stroke="#F57F17" stroke-width="2"/>
+  <rect x="172" y="134" width="28" height="28" rx="5" fill="white" opacity="0.2"/>
+  <text x="186" y="153" text-anchor="middle" font-size="17" fill="white">⬇</text>
+  <text x="245" y="157" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Load &amp;</text>
+  <text x="245" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Join</text>
+
+  <!-- Arrow 1 → 2 -->
+  <line x1="286" y1="158" x2="304" y2="158" stroke="#555" stroke-width="2.5"/>
+  <polygon points="304,153 316,158 304,163" fill="#555"/>
+
+  <!-- ② Prompt Construction  x=316 -->
+  <rect x="316" y="130" width="118" height="55" rx="9" fill="#F9A825" stroke="#F57F17" stroke-width="2"/>
+  <rect x="320" y="134" width="28" height="28" rx="5" fill="white" opacity="0.2"/>
+  <text x="334" y="153" text-anchor="middle" font-size="16" fill="white">✎</text>
+  <text x="393" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Prompt</text>
+  <text x="393" y="166" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Construction</text>
+
+  <!-- Arrow 2 → 3 -->
+  <line x1="434" y1="158" x2="452" y2="158" stroke="#555" stroke-width="2.5"/>
+  <polygon points="452,153 464,158 452,163" fill="#555"/>
+
+  <!-- ③ LLM Inference  x=464 -->
+  <rect x="464" y="130" width="118" height="55" rx="9" fill="#F9A825" stroke="#F57F17" stroke-width="2"/>
+  <rect x="468" y="134" width="28" height="28" rx="5" fill="white" opacity="0.2"/>
+  <text x="482" y="153" text-anchor="middle" font-size="16" fill="white">⚙</text>
+  <text x="541" y="157" text-anchor="middle" font-size="11" font-weight="bold" fill="white">LLM</text>
+  <text x="541" y="172" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Inference</text>
+
+  <!-- Arrow 3 → 4 -->
+  <line x1="582" y1="158" x2="602" y2="158" stroke="#555" stroke-width="2.5"/>
+  <polygon points="602,153 614,158 602,163" fill="#555"/>
+
+  <!-- ④ 3-Layer Validation  x=614 -->
+  <rect x="614" y="130" width="128" height="55" rx="9" fill="#F9A825" stroke="#F57F17" stroke-width="2"/>
+  <rect x="618" y="134" width="28" height="28" rx="5" fill="white" opacity="0.2"/>
+  <text x="632" y="153" text-anchor="middle" font-size="16" fill="white">✓</text>
+  <text x="699" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">3-Layer</text>
+  <text x="699" y="166" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Validation</text>
+
+  <!-- Arrow 4 → 5 -->
+  <line x1="742" y1="158" x2="764" y2="158" stroke="#555" stroke-width="2.5"/>
+  <polygon points="764,153 776,158 764,163" fill="#555"/>
+
+  <!-- HITL Decision Zone background — groups HITL box + all tier branches -->
+  <rect x="770" y="74" width="348" height="256" rx="12" fill="#F5EEF8" stroke="#8E44AD" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.85"/>
+  <text x="835" y="92" text-anchor="middle" font-size="10" font-weight="bold" fill="#6C3483">HITL Decision</text>
+
+  <!-- ⑤ HITL Routing  x=776  (purple) -->
+  <rect x="776" y="130" width="118" height="55" rx="9" fill="#8E44AD" stroke="#6C3483" stroke-width="2"/>
+  <rect x="780" y="134" width="28" height="28" rx="5" fill="white" opacity="0.2"/>
+  <text x="794" y="154" text-anchor="middle" font-size="15" fill="white">⇌</text>
+  <text x="853" y="151" text-anchor="middle" font-size="11" font-weight="bold" fill="white">HITL</text>
+  <text x="853" y="165" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Routing</text>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HITL TIER BRANCHES
+       HITL right edge = x=894, center y=165
+       Vertical bus at x=930, spanning y=88–296
+  ══════════════════════════════════════════════════════════ -->
+
+  <!-- Horizontal connection HITL → bus -->
+  <line x1="894" y1="158" x2="930" y2="158" stroke="#666" stroke-width="2"/>
+
+  <!-- Vertical bus (spans Tier 1 branch to Tier 3 branch only) -->
+  <line x1="930" y1="118" x2="930" y2="278" stroke="#666" stroke-width="2"/>
+
+  <!-- Branch to Tier 1 -->
+  <text x="1025" y="85" text-anchor="middle" font-size="9" font-weight="bold" fill="#27AE60">TIER 1 — auto-accept ✓</text>
+  <line x1="930" y1="118" x2="958" y2="118" stroke="#27AE60" stroke-width="2"/>
+  <polygon points="958,113 970,118 958,123" fill="#27AE60"/>
+
+  <!-- Branch to Tier 2 -->
+  <text x="1039" y="163" text-anchor="middle" font-size="9" font-weight="bold" fill="#E67E22">TIER 2 — human review ⚠</text>
+  <line x1="930" y1="200" x2="958" y2="200" stroke="#E67E22" stroke-width="2"/>
+  <polygon points="958,195 970,200 958,205" fill="#E67E22"/>
+
+  <!-- Branch to Tier 3 -->
+  <text x="1039" y="243" text-anchor="middle" font-size="9" font-weight="bold" fill="#E74C3C">TIER 3 — reject / re-run ✗</text>
+  <line x1="930" y1="278" x2="958" y2="278" stroke="#E74C3C" stroke-width="2"/>
+  <polygon points="958,273 970,278 958,283" fill="#E74C3C"/>
+
+  <!-- ── TIER 1: Result Writer → MLflow → Evaluation ── -->
+  <!-- Result Writer  x=970, y=88, w=110, h=62 -->
+  <rect x="970" y="88" width="110" height="62" rx="8" fill="#229954" stroke="#1E8449" stroke-width="1.5"/>
+  <text x="1025" y="113" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Result</text>
+  <text x="1025" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Writer</text>
+  <text x="1025" y="143" text-anchor="middle" font-size="8" fill="#A9DFBF">auto-accept</text>
+
+  <line x1="1080" y1="119" x2="1100" y2="119" stroke="#27AE60" stroke-width="2"/>
+  <polygon points="1100,114 1112,119 1100,124" fill="#27AE60"/>
+
+  <!-- MLflow  x=1112, y=88 -->
+  <rect x="1112" y="88" width="110" height="62" rx="8" fill="#2980B9" stroke="#1F618D" stroke-width="1.5"/>
+  <text x="1167" y="113" text-anchor="middle" font-size="11" font-weight="bold" fill="white">MLflow</text>
+  <text x="1167" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Tracking</text>
+  <text x="1167" y="143" text-anchor="middle" font-size="8" fill="#AED6F1">metrics · params · artifacts</text>
+
+  <line x1="1222" y1="119" x2="1242" y2="119" stroke="#2980B9" stroke-width="2"/>
+  <polygon points="1242,114 1254,119 1242,124" fill="#2980B9"/>
+
+  <!-- Evaluation  x=1254, y=88 -->
+  <rect x="1254" y="88" width="122" height="62" rx="8" fill="#1A5276" stroke="#154360" stroke-width="1.5"/>
+  <text x="1315" y="110" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Evaluation</text>
+  <text x="1315" y="124" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Framework</text>
+  <text x="1315" y="139" text-anchor="middle" font-size="8" fill="#85C1E9">combined_score · weighted F1</text>
+  <text x="1315" y="149" text-anchor="middle" font-size="8" fill="#85C1E9">hallucination rate · stratified</text>
+
+  <!-- ── TIER 2: Pathologist Review ── -->
+  <!-- box  x=970, y=168, w=138, h=65 -->
+  <rect x="970" y="168" width="138" height="65" rx="8" fill="#E67E22" stroke="#CA6F1E" stroke-width="1.5"/>
+  <text x="1039" y="191" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Pathologist</text>
+  <text x="1039" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Review</text>
+  <text x="1039" y="217" text-anchor="middle" font-size="8" fill="#FDEBD0">vocab_flagged · T/N missing</text>
+  <text x="1039" y="228" text-anchor="middle" font-size="8" fill="#FDEBD0">1–2 flags</text>
+
+
+  <!-- ── TIER 3: Reject / Re-run ── -->
+  <!-- box  x=970, y=248, w=138, h=65 -->
+  <rect x="970" y="248" width="138" height="65" rx="8" fill="#E74C3C" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="1039" y="272" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Reject /</text>
+  <text x="1039" y="287" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Re-run</text>
+  <text x="1039" y="298" text-anchor="middle" font-size="8" fill="#FADBD8">JSON/schema fail</text>
+  <text x="1039" y="309" text-anchor="middle" font-size="8" fill="#FADBD8">&gt;2 hallucination flags</text>
+
+  <!-- Tier 3 retry loop back to LLM Inference -->
+  <path d="M 1039 313 L 1039 345 L 523 345 L 523 186"
+        stroke="#E74C3C" stroke-width="1.5" fill="none" stroke-dasharray="5,4"/>
+  <polygon points="518,186 523,176 528,186" fill="#E74C3C"/>
+  <text x="782" y="359" text-anchor="middle" font-size="9" fill="#C0392B" font-style="italic">
+    retry with correction prompt
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════
+       VALIDATION LAYER DETAIL  (below Step 4, x=614–742)
+  ══════════════════════════════════════════════════════════ -->
+  <line x1="678" y1="185" x2="678" y2="375" stroke="#F57F17" stroke-width="1" stroke-dasharray="3,3"/>
+  <rect x="614" y="375" width="140" height="128" rx="6" fill="#FFF8E1" stroke="#F9A825" stroke-width="1.5"/>
+  <text x="684" y="392" text-anchor="middle" font-size="10" font-weight="bold" fill="#7B4800">Validation Layers</text>
+  <line x1="618" y1="397" x2="750" y2="397" stroke="#F9A825" stroke-width="1"/>
+  <circle cx="628" cy="414" r="9" fill="#F9A825"/>
+  <text x="628" y="418" text-anchor="middle" font-size="9" fill="white" font-weight="bold">1</text>
+  <text x="642" y="418" font-size="9" fill="#333">JSON parsing + retry</text>
+  <circle cx="628" cy="434" r="9" fill="#F9A825"/>
+  <text x="628" y="438" text-anchor="middle" font-size="9" fill="white" font-weight="bold">2</text>
+  <text x="642" y="438" font-size="9" fill="#333">Pydantic schema v1.2</text>
+  <circle cx="628" cy="454" r="9" fill="#F9A825"/>
+  <text x="628" y="458" text-anchor="middle" font-size="9" fill="white" font-weight="bold">3</text>
+  <text x="642" y="458" font-size="9" fill="#333">Clinical vocab check</text>
+  <text x="642" y="472" font-size="7" fill="#888">TNM regex · grade vocab</text>
+  <text x="642" y="482" font-size="7" fill="#888">· ICD-O-3</text>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MODEL OPTIONS  (hexagons below LLM Inference)
+       Centers: cx=310, 400, 490, 580   cy=435   r=35
+  ══════════════════════════════════════════════════════════ -->
+  <line x1="523" y1="185" x2="523" y2="375" stroke="#F57F17" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="445" y="393" text-anchor="middle" font-size="11" font-weight="bold" fill="#444">Model Options — via aisuite</text>
+
+  <!-- Hex macro: pointed-top, r=35, sin60=30.3, cos60=17.5 -->
+  <!-- o4-mini  cx=310 -->
+  <polygon points="310,400 340,418 340,453 310,470 280,453 280,418" fill="#5DADE2" stroke="#2471A3" stroke-width="1.5"/>
+  <text x="310" y="428" text-anchor="middle" font-size="10" font-weight="bold" fill="white">o4-mini</text>
+  <text x="310" y="441" text-anchor="middle" font-size="9" fill="#D6EAF8">OpenAI</text>
+  <text x="310" y="453" text-anchor="middle" font-size="9" fill="#D6EAF8">cloud API</text>
+  <text x="310" y="483" text-anchor="middle" font-size="9" fill="#555">☁ Cloud</text>
+
+  <!-- Mistral Nemo  cx=400 -->
+  <polygon points="400,400 430,418 430,453 400,470 370,453 370,418" fill="#52BE80" stroke="#1E8449" stroke-width="1.5"/>
+  <text x="400" y="425" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Mistral</text>
+  <text x="400" y="438" text-anchor="middle" font-size="9" fill="#D5F5E3">Nemo 12B</text>
+  <text x="400" y="450" text-anchor="middle" font-size="9" fill="#D5F5E3">128k ctx</text>
+  <text x="400" y="483" text-anchor="middle" font-size="9" fill="#555">🔒 GDPR · Local</text>
+
+  <!-- OpenBioLLM  cx=490 -->
+  <polygon points="490,400 520,418 520,453 490,470 460,453 460,418" fill="#52BE80" stroke="#1E8449" stroke-width="1.5"/>
+  <text x="490" y="422" text-anchor="middle" font-size="10" font-weight="bold" fill="white">OpenBio</text>
+  <text x="490" y="435" text-anchor="middle" font-size="9" fill="#D5F5E3">LLM 8B</text>
+  <text x="490" y="448" text-anchor="middle" font-size="9" fill="#D5F5E3">biomedical</text>
+  <text x="490" y="461" text-anchor="middle" font-size="9" fill="#D5F5E3">8k ctx</text>
+  <text x="490" y="483" text-anchor="middle" font-size="9" fill="#555">🔒 GDPR · Local</text>
+
+  <!-- Dashed arrows from models to LLM Inference bottom (y=200, spread across box) -->
+  <line x1="310" y1="400" x2="487" y2="200" stroke="#2471A3" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+  <line x1="400" y1="400" x2="507" y2="200" stroke="#1E8449" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+  <line x1="490" y1="400" x2="533" y2="200" stroke="#1E8449" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MONITORING SECTION  (below MLflow)
+  ══════════════════════════════════════════════════════════ -->
+  <line x1="1167" y1="150" x2="1167" y2="370" stroke="#1F618D" stroke-width="1" stroke-dasharray="3,3"/>
+  <rect x="1112" y="370" width="110" height="115" rx="6" fill="#EBF5FB" stroke="#2980B9" stroke-width="1.5"/>
+  <text x="1167" y="388" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A5276">Monitoring</text>
+  <line x1="1116" y1="393" x2="1218" y2="393" stroke="#2980B9" stroke-width="1"/>
+  <text x="1118" y="408" font-size="9" fill="#333">① Tier 1 drift alert</text>
+  <text x="1118" y="422" font-size="9" fill="#333">② Hallucination alert</text>
+  <text x="1130" y="435" font-size="8" fill="#888">&gt; 8 % → pipeline pause</text>
+  <text x="1118" y="449" font-size="9" fill="#333">③ m_null_rate guard</text>
+  <text x="1130" y="462" font-size="8" fill="#888">rollback procedure</text>
+  <text x="1130" y="477" font-size="8" fill="#888">run_monitors.py</text>
+
+  <!-- ══════════════════════════════════════════════════════════
+       GROUND TRUTH ANNOTATION  (below Evaluation, hex)
+       Center: cx=1315, cy=400, r=37
+  ══════════════════════════════════════════════════════════ -->
+  <line x1="1315" y1="150" x2="1315" y2="362" stroke="#154360" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- pointed-top hex, r=37: sin60×37=32, cos60×37=18.5 -->
+  <polygon points="1315,363 1347,381 1347,418 1315,436 1283,418 1283,381"
+           fill="#E67E22" stroke="#CA6F1E" stroke-width="1.5"/>
+  <text x="1315" y="389" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Ground</text>
+  <text x="1315" y="402" text-anchor="middle" font-size="9" fill="#FDEBD0">Truth</text>
+  <text x="1315" y="414" text-anchor="middle" font-size="9" fill="#FDEBD0">180 records</text>
+  <text x="1315" y="426" text-anchor="middle" font-size="9" fill="#FDEBD0">annotated</text>
+  <text x="1315" y="450" text-anchor="middle" font-size="8" fill="#888">M. Castillo · 2026-05-28</text>
+
+
+
+</svg>
