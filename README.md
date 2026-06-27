@@ -94,13 +94,8 @@ notebooks/
   01_eda.ipynb              corpus exploration, report style classification
   03_evaluation.ipynb       field-level accuracy, HITL tier distribution
   06_cross_run_comparison.ipynb  multi-model/prompt benchmarks
-  07_embedding_comparison.ipynb  SapBERT vs. exact-match evaluation
 
 tests/              unit + integration tests for all pipeline components
-specs/
-  mission.md        goals, extraction targets, success criteria
-  tech-stack.md     architectural decisions and versioning policy
-  roadmap.md        phase-by-phase development history
 ```
 
 ---
