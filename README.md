@@ -90,11 +90,6 @@ src/
   schema.py         Pydantic output schema (versioned)
   prompts/          versioned prompt templates (v1.0 → v1.9)
 
-notebooks/
-  01_eda.ipynb              corpus exploration, report style classification
-  03_evaluation.ipynb       field-level accuracy, HITL tier distribution
-  06_cross_run_comparison.ipynb  multi-model/prompt benchmarks
-
 tests/              unit + integration tests for all pipeline components
 ```
 
